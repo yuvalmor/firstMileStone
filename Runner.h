@@ -43,6 +43,19 @@ public:
                 }
                 file.close();
             }
+       /* } else {
+            cout << "insert output" <<endl;
+            bool flag = true;
+            while (flag) {
+                getline(cin, line);
+                if (!line.empty()) {
+                    runTheProgram(line, &lexer, &parser);
+                } else {
+                    flag = false;
+                }
+            }
+            return;
+        }*/
         } else {
             return;
         }

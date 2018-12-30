@@ -44,7 +44,6 @@ BooleanExpression* Parser::createBoolExp() {
     return conditionExp;
 }
 
-
 /**
  * The function ParserAnalysis, parser the line that he holds as a data member.
  * Each line represent different command to preform,
@@ -64,7 +63,7 @@ void Parser::parserAnalysis() {
             command = new BindCommand(line);
         } else {
             // Define new variable ("local variable")
-            command = new DefineCommand(&line);
+            command = new DefineCommand(line);
         }
     }
     if (line.size() == UPDATE_VAR_PARAMETERS && line.at(ASSIGN_LOCATION) == "=") {

@@ -12,10 +12,8 @@ class DefineCommand : public Command{
     // The variable value
     double value;
 public:
-
     // Constructor
-    explicit DefineCommand(vector<string>* line);
-
+    explicit DefineCommand(vector<string> line);
     // Define new var, and save it in the relevant table
     void doCommand() override;
 };

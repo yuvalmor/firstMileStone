@@ -1,7 +1,6 @@
 #ifndef SIMULATOR9492YN_EXPRESSION_H
 #define SIMULATOR9492YN_EXPRESSION_H
 
-#include "Command.h"
 using namespace std;
 
 // Expression is abstract

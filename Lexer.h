@@ -15,8 +15,6 @@ class Lexer{
 public:
     // Set the data member line
     void setLine(string line){this->line = line;}
-    // Get the data member line
-    string getLine(){return this->line; }
     // Do the analysis and split the line into words
     vector<string> lexicalAnalysis ();
     // Support function

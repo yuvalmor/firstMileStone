@@ -1,9 +1,0 @@
-חלוקת תפקידים. 
-
-יובל - commands interface +  open classes,command parser, 
-
-נועם -  shunting yard
-
-כללי - NOT, WHILE, ALGORITHEM, LEXER, PARSER, SERVER + CLIENT. 
-
-DONE - mult,plus,number,interface expression, BinaryExpression,divide, minus 

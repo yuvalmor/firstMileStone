@@ -1,4 +1,3 @@
-
 #include "ConnectCommand.h"
 #include "TableManager.h"
 #include "Var.h"
@@ -23,7 +22,6 @@ using namespace std;
 #define SECOND_EXP_LOC 2
 
 ConnectCommand::ConnectCommand(vector<string> line) {
-
     // Checks if the input is valid
     if (line.size() != NUM_PARAMETERS) {
         throw exception();

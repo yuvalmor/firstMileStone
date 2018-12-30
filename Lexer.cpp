@@ -3,22 +3,21 @@
 
 /**
  * The function separateOperations get string line,
- * And add spaces between operators: !,<,>,=.
+ * And add spaces before and after the operators: !,<,>,=.
  * It returns the new fixed line.
  */
 string Lexer::separateOperations() {
-    string line = this->getLine();
     int i =0;
     string fixedLine;
     // Pass on every character in the line
     while (i < line.length()){
         // If the character is an operator
         if(line[i] =='=' || line[i] =='!' || line[i] =='<' || line[i] =='>'){
-            fixedLine=fixedLine + " " + line[i] + " ";
+            fixedLine = fixedLine + " " + line[i] + " ";
         } else {
             fixedLine = fixedLine + line[i];
         }
-        // Move to the next character
+        // Move on to the next character
         i++;
     }
     // Return the fixed line
@@ -26,13 +25,13 @@ string Lexer::separateOperations() {
 }
 
 /**
- * The function checkMach check if the regex pattern match the string.
+ * The function checkMatch checks if the regex pattern match the string.
  * Return true if the pattern exist in the string and false otherwise.
  */
-bool checkMach (const regex regexPattern, const string str){
+bool checkMatch (regex regexPattern, string str){
     smatch match;
     regex_search(str,match,regexPattern);
-    // If there is a match return true
+    // If there is a match, return true, and false otherwise
     if(!match.empty()){
         return true;
     }
@@ -41,7 +40,9 @@ bool checkMach (const regex regexPattern, const string str){
 
 /**
  * The function checkUniqueCharacters - checks the first and the last character in the word.
- * If one of them is a unique character it update the boolean pointers head and back.
+ * If one of them is a unique character, it update the boolean pointers head and back.
+ * When update the boolean pointers to false -
+ * It means that they need to join to the next or the previuos token.
  */
 void checkUniqueCharacters(string word,bool* head,bool* back){
     string str;
@@ -51,18 +52,19 @@ void checkUniqueCharacters(string word,bool* head,bool* back){
     bool matchingAnswer;
     char start = word[0];
     char end = word[word.length()-1];
+    // Push the first character in the word
     str.push_back(start);
-    matchingAnswer = checkMach(leftBracket, str);
+    matchingAnswer = checkMatch(leftBracket, str);
     if(matchingAnswer) {
         *head = true;
         *back = false;
         return;
     }
-    matchingAnswer = checkMach(rightBracket, str);
+    matchingAnswer = checkMatch(rightBracket, str);
     if(matchingAnswer) {
         *head = false;
     } else{
-        matchingAnswer = checkMach(regOperator,str);
+        matchingAnswer = checkMatch(regOperator,str);
         if(matchingAnswer){
             *head = false;
         } else {
@@ -73,18 +75,18 @@ void checkUniqueCharacters(string word,bool* head,bool* back){
     str.pop_back();
     // Push the last character in the word
     str.push_back(end);
-    matchingAnswer = checkMach(leftBracket,str);
+    matchingAnswer = checkMatch(leftBracket,str);
     if(matchingAnswer){
         *back = false;
         return;
     }
-    matchingAnswer = checkMach(rightBracket,str);
+    matchingAnswer = checkMatch(rightBracket,str);
     if(matchingAnswer){
         *head = false;
         *back = true;
         return;
     }
-    matchingAnswer = checkMach(regOperator,str);
+    matchingAnswer = checkMatch(regOperator,str);
     if(matchingAnswer) {
         *back = false;
         return;
@@ -119,7 +121,7 @@ vector<string> Lexer::lexicalAnalysis() {
             if(front){
                 commands.push_back(buffer);
             } else {
-                if(commands.size()>1 && !checkMach(regex("[<=>]"),commands[commands.size()-1])){
+                if(commands.size()>1 && !checkMatch(regex("[<=>]"),commands[commands.size()-1])){
                     string temp = commands.back();
                     temp = temp+buffer;
                     commands.pop_back();
