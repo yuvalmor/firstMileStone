@@ -9,7 +9,7 @@
 class BindCommand : public Command{
     // The variable that we define
     string varName;
-    // The object that holds the path to the simulator
+    // The path to the simulator - direct path or variable name that holds the path
     string bindTo;
 public:
     // Constructor to bind command
