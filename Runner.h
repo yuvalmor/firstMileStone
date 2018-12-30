@@ -13,11 +13,13 @@ using namespace std;
 class Runner {
 mutex mu;
 public:
+
     void runTheProgram(const string& line, Lexer* lexer, Parser* parser) {
         lexer->setLine(line);
         parser->setLine(lexer->lexicalAnalysis());
         parser->parserAnalysis();
     }
+    //main function
     void run(int argc, char* argv[]) {
         // download addresses from file
         TableManager *tableManager = TableManager::getInstance();
