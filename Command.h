@@ -7,6 +7,11 @@
 
 using namespace std;
 
+/**
+ * Command is an abstract class,
+ * That has pure virtual method - doCommand.
+ * All the commands in the program inherit this class.
+ */
 class Command {
 public:
     virtual void doCommand()=0;
