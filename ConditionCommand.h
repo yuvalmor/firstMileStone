@@ -1,5 +1,5 @@
-#ifndef NEWSIMULATOR_CONDITIONCOMMAND_H
-#define NEWSIMULATOR_CONDITIONCOMMAND_H
+#ifndef SIMULATOR9492YN_MASTER_CONDITIONCOMMAND_H
+#define SIMULATOR9492YN_MASTER_CONDITIONCOMMAND_H
 
 #include "Command.h"
 #include "BooleanExpression.h"
@@ -8,12 +8,11 @@
  * All the commands that depends in condition
  */
 class ConditionCommand : public Command{
-    // THe condition
+    // The condition
     BooleanExpression* booleanExpression;
     // All the commands to perform if the condition is true
     vector<Command*> commands;
 public:
-
     // Constructor to condition command
     explicit ConditionCommand(BooleanExpression* booleanExpression){
         this->booleanExpression = booleanExpression;
